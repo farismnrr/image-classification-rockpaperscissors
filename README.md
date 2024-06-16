@@ -15,7 +15,7 @@ myenv\Scripts\activate
 ```
 - Create Virtual Environment (Linux)
 ```sh
-pip install virtualenv
+sudo apt install python3-venv
 python -m venv myenv
 source myenv/bin/activate
 ```
