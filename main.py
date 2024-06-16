@@ -6,7 +6,6 @@ from PIL import Image
 import numpy as np
 from io import BytesIO
 from fastapi import FastAPI, File, UploadFile
-import uvicorn
 
 app = FastAPI()
 
@@ -44,14 +43,9 @@ async def classify_image(image: UploadFile = File(...)):
     predictions = model.predict(x)
 
     # Determine the class of the uploaded image
-    if np.argmax(predictions[0]) == 0:
-        return {"class": "ROCK"}
-    elif np.argmax(predictions[0]) == 1:
-        return {"class": "PAPER"}
-    elif np.argmax(predictions[0]) == 2:
-        return {"class": "SCISSORS"}
+    class_labels = ['ROCK', 'PAPER', 'SCISSORS']
+    class_id = np.argmax(predictions[0])
+    if class_id < len(class_labels):
+        return {"class": class_labels[class_id]}
     else:
         return {"class": "UNKNOWN"}
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
