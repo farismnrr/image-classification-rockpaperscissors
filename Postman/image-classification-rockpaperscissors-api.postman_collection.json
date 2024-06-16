@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "ce8b7636-9274-4bbb-b030-497711c4612a",
+		"name": "image-classification-rockpaperscissors-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30262904"
+	},
+	"item": [
+		{
+			"name": "Get the Server",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000"
+			},
+			"response": []
+		},
+		{
+			"name": "POST image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "postman-cloud:///1ef2bbd0-fc33-4780-9f8e-dc9c6a1cb763"
+						}
+					]
+				},
+				"url": "http://localhost:8000/classify"
+			},
+			"response": []
+		}
+	]
+}
